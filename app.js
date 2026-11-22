@@ -107,6 +107,8 @@ function createTaskElement(task) {
   const span = document.createElement('span');
   span.className = 'task-text';
   span.textContent = task.text;
+  span.title = 'Dubultklikšķis – labot';
+  span.addEventListener('dblclick', function () { startEdit(span, task); });
 
   const delBtn = document.createElement('button');
   delBtn.type = 'button';
@@ -117,6 +119,58 @@ function createTaskElement(task) {
 
   li.append(checkbox, span, delBtn);
   return li;
+}
+
+// Izveido labošanas ievades lauku ar esošo tekstu
+function createEditInput(text) {
+  const editInput = document.createElement('input');
+  editInput.type = 'text';
+  editInput.className = 'edit-input';
+  editInput.value = text;
+  editInput.setAttribute('aria-label', 'Labot uzdevumu');
+  return editInput;
+}
+
+// Aizstāj uzdevuma tekstu ar ievades lauku labošanai
+function startEdit(span, task) {
+  const editInput = createEditInput(task.text);
+  // Karodziņš, lai beigu darbība izpildītos tikai vienreiz
+  let finished = false;
+  function finish(save) {
+    if (finished) {
+      return;
+    }
+    finished = true;
+    if (save) {
+      finishEdit(task, editInput.value);
+    } else {
+      render();
+    }
+  }
+  editInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      finish(true);
+    } else if (e.key === 'Escape') {
+      finish(false);
+    }
+  });
+  // Klikšķis ārpus lauka atceļ labošanu
+  editInput.addEventListener('blur', function () { finish(false); });
+  span.replaceWith(editInput);
+  editInput.focus();
+  editInput.select();
+}
+
+// Saglabā labošanas rezultātu (tukšs vai nemainīts teksts – paliek vecais)
+function finishEdit(task, newText) {
+  const text = newText.trim();
+  if (text === '' || text === task.text) {
+    render();
+    return;
+  }
+  task.text = text;
+  update();
 }
 
 // Atgriež skaitītāja tekstu ar pareizu latviešu valodas formu

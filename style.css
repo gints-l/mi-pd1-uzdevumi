@@ -117,6 +117,16 @@ button {
   overflow-wrap: anywhere;
 }
 
+/* Uzdevuma teksta labošanas lauks */
+.edit-input {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 8px;
+  font: inherit;
+  border: 1px solid #3b82f6;
+  border-radius: 6px;
+}
+
 /* Izpildīts uzdevums – izsvītrots teksts */
 li.done .task-text {
   text-decoration: line-through;

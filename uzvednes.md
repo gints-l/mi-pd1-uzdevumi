@@ -1,4 +1,4 @@
-# Uzvedņu šablon1 - PD1
+# Uzvedņu šabloni - PD1
 
 ## Uzdevuma apraksts
 
