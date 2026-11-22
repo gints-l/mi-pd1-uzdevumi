@@ -1,0 +1,142 @@
+/* Pamata iestatījumi */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px 16px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f2f4f7;
+  color: #1f2933;
+}
+
+/* Lietotnes konteiners */
+.app {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/* Ievades rinda */
+.add-row {
+  display: flex;
+  gap: 8px;
+}
+
+#task-input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid #cbd2d9;
+  border-radius: 8px;
+}
+
+#task-input:focus {
+  outline: 2px solid #3b82f6;
+  border-color: transparent;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#add-btn {
+  padding: 10px 16px;
+  border: none;
+  background: #3b82f6;
+  color: #fff;
+}
+
+#add-btn:hover {
+  background: #2563eb;
+}
+
+/* Filtru pogas */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.filters button {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #cbd2d9;
+  background: #fff;
+  color: #1f2933;
+}
+
+.filters button:hover {
+  background: #eef2f7;
+}
+
+/* Izvēlētais filtrs – vizuāli izcelts */
+.filters button.active {
+  background: #1f2933;
+  border-color: #1f2933;
+  color: #fff;
+}
+
+/* Uzdevumu saraksts */
+#task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#task-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 4px;
+  border-bottom: 1px solid #e4e7eb;
+}
+
+#task-list input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.task-text {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+/* Izpildīts uzdevums – izsvītrots teksts */
+li.done .task-text {
+  text-decoration: line-through;
+  color: #9aa5b1;
+}
+
+.delete-btn {
+  padding: 4px 10px;
+  border: 1px solid #f5b5b5;
+  background: #fff;
+  color: #c62828;
+}
+
+.delete-btn:hover {
+  background: #fdecec;
+}
+
+/* Skaitītājs */
+.footer {
+  margin-top: 16px;
+  color: #52606d;
+  font-size: 0.95rem;
+}
